@@ -1,0 +1,32 @@
+{
+  "name": "slash.us-client",
+  "version": "1.0.0",
+  "description": "Slash.Us Client for accessing Slash.Us API on your own server project.",
+  "main": "slash.us-client.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/npsopheak/slash.us-client.git"
+  },
+  "keywords": [
+    "slash",
+    "api",
+    "payment",
+    "gateway"
+  ],
+  "author": "Promsopheak Nuon (Sean)",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/npsopheak/slash.us-client#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  },
+  "dependencies": {
+    "assert": "^1.4.0",
+    "luhn": "^2.1.0",
+    "request": "^2.72.0",
+    "validator": "^5.3.0"
+  }
+}
