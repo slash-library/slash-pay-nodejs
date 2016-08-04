@@ -76,7 +76,7 @@ exports = module.exports = (function() {
         headers = headers || {};
         
         return request({
-            url: api.apiUrl + api.version + endPoint, 
+            url: api.apiUrl + api.version + '/' + endPoint, 
             method: 'POST',
             body: JSON.stringify(params),
             headers: {
