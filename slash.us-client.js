@@ -135,6 +135,60 @@ function slashClient (opt) {
             catch (er){
                 callback(er, null);
             }
+        },
+        
+        redirect: function (params, callback){
+            
+            // Fallback callback
+            callback = callback || noop;
+            
+            try{
+                
+                // Validate params
+                var validateResult = validate.checkRedirectParams(params);
+                assert(validateResult.pass, validateResult.messages);
+                
+                var result = null;
+                
+                request.post('redirect', params, {
+                    apiKey: api.privateKey 
+                }, function (err, res, body){
+                    if (err){
+                        return callback(err, null);        
+                    } 
+                    callback(null, body);
+                });
+            }
+            catch (er){
+                callback(er, null);
+            }
+        },
+        
+        confirm: function (params, callback){
+            
+            // Fallback callback
+            callback = callback || noop;
+            
+            try{
+                
+                // Validate params
+                var validateResult = validate.checkConfirmParams(params);
+                assert(validateResult.pass, validateResult.messages);
+                
+                var result = null;
+                
+                request.post('confirm', params, {
+                    apiKey: api.privateKey 
+                }, function (err, res, body){
+                    if (err){
+                        return callback(err, null);        
+                    } 
+                    callback(null, body);
+                });
+            }
+            catch (er){
+                callback(er, null);
+            }
         }
     }
 }
