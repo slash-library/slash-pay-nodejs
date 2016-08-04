@@ -5,6 +5,7 @@ exports = module.exports = (function() {
     var assert = require('assert');
     var luhn = require('luhn');
     var validator = require('validator');
+    var util = require('util');
     var api = require('./api.js');
     /**
      * Checking Slash.us-client constructor required parameters
@@ -273,6 +274,97 @@ exports = module.exports = (function() {
             if (!params.subscription_id){
                 messages.push('Subscription id field is required.');
             }
+        }
+            
+        return {
+            pass: !messages.length,
+            validators: messages,
+            messages: messages.join(', '),  
+        };
+    };
+    
+    /**
+     * Checking Slash.us-client redirect method required parameters
+     * Params: 
+     *      - @params : Object
+     * Expected: 
+     *      - params.subscription_id: required
+     */
+    methods.checkRedirectParams = function (params){
+        
+        let messages = [];
+        // Validate all params
+        if (params === null || typeof params !== 'object') {
+            messages.push('Some fields are missing');
+        }
+
+        // Validate items list
+        if (!params.items) {
+            messages.push('Items field is missing');
+        }
+        else if (!util.isArray(params.items)) {
+            messages.push('Items field is invalid');
+        }
+        else if (util.isArray(params.items)) {
+            // Check field inside
+            var hasError = false;
+            for(var key in params.items){
+                var value = params.items[key]; 
+                if (!value.amt || !value.qty || !value.name){
+                    hasError = true;
+                }
+            }
+            if (hasError){
+                messages.push('Items field of amt or qty or name is invalid');    
+            }        
+        }
+
+        // Validate return url
+        if (!params.return_url) {
+            messages.push('Return url field is missing');
+        }
+        else if (!validator.isURL(params.return_url)){
+            messages.push('Return url field is invalid');
+        }
+
+        // Validate cancel url
+        if (!params.cancel_url) {
+            messages.push('Cancel url field is missing');
+        }
+        else if (!validator.isURL(params.cancel_url)){
+            messages.push('Cancel url field is missing');
+        }
+        
+        // Validate currency
+        if (!params.currency) {
+            messages.push('Currency field is missing');
+        }    
+        
+        return {
+            pass: !messages.length,
+            validators: messages,
+            messages: messages.join(', '),  
+        };
+    };
+    
+    /**
+     * Checking Slash.us-client confirm method required parameters
+     * Params: 
+     *      - @params : Object
+     * Expected: 
+     *      - params.subscription_id: required
+     */
+    methods.checkConfirmParams = function (params){
+        
+        let messages = [];
+        // Validate form data
+        if (params === null || typeof params !== 'object') {
+            messages.push('Some fields are missing');
+        }
+
+        // Validate the transaction id
+        if (!params.transaction_id) {
+            messages.push('Transaction id field is missing');
         }
             
         return {
