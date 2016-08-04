@@ -40,7 +40,7 @@ exports = module.exports = (function() {
         headers = headers || {};
         
         return request({
-            url: api.api_url + endPoint + queryBuilder(params), 
+            url: api.apiUrl + api.version + '/' + endPoint + queryBuilder(params), 
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + headers.apiKey,
@@ -76,7 +76,7 @@ exports = module.exports = (function() {
         headers = headers || {};
         
         return request({
-            url: api.api_url + endPoint, 
+            url: api.apiUrl + api.version + endPoint, 
             method: 'POST',
             body: JSON.stringify(params),
             headers: {
