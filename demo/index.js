@@ -62,3 +62,33 @@ slashPay.unsubscribe({
     console.log('--> Data: ');
     console.log(data); 
 });
+
+// Redirect: Create redirect payment
+slashPay.redirect({
+    "items": [{
+        "amt": 10,
+        "name": "Test",
+        "qty": 1
+    }],
+    "return_url": "https://www.google.com.kh",
+    "cancel_url": "https://www.google.com.kh",
+    "currency": "USD"
+}, function (er, data){
+    console.log('[redirect][result] Request to redirect payment');
+    console.log('--> Error: ');
+    console.log(er);
+    console.log('--> Data: ');
+    console.log(data); 
+});
+
+// Confirm: Confirm redirect payment
+slashPay.confirm({
+    "transaction_id": "57a1c14052ff12c62b10781f"
+}, function (er, data){
+    console.log('[confirm][result] Confirm the redirect payment');
+    console.log('--> Error: ');
+    console.log(er);
+    console.log('--> Data: ');
+    console.log(data); 
+});
+
