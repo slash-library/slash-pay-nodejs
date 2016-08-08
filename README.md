@@ -23,11 +23,33 @@ var slashClient = require('slash.us-client');
 slashClient = slashClient.init({api_token: 'YOUR_TOKEN'});
 
 ```
+## Checkout API ##
+
+#### Pay by card number ####
+
+```javascript
+slashClient.pay({
+    cc_no: '4111111111111111',
+    total: 999,
+    first_name: 'Sean',
+    last_name: 'Nuon',
+    currency: 'USD',
+    expiry_month: '05',
+    expiry_year: '2021',
+    cvv: '566'
+}, function (er, result){
+    if (er){
+        return console.log(er);
+    }
+    // Do something else with payment result
+});
+
+```
 
 #### Pay by token ####
 
 ```javascript
-slashClient.payByToken({
+slashClient.charge({
     token: 'YOUR_CARD_TOKEN',
     total: 999
 }, function (er, result){
@@ -38,18 +60,65 @@ slashClient.payByToken({
 });
 
 ```
-#### Pay by card number ####
+
+## Subscribe API
+
+#### Subscribe ####
 
 ```javascript
-slashClient.payByCardNumber({
-    cc_no: '4111111111111111',
-    total: 999,
-    first_name: 'Sean',
-    last_name: 'Nuon',
-    currency: 'USD',
-    expiry_month: '05',
-    expiry_year: '2021',
-    cvv: '566'
+slashClient.subscribe({
+    token: 'YOUR_CARD_TOKEN',
+    total: 999
+}, function (er, result){
+    if (er){
+        return console.log(er);
+    }
+    // Do something else with payment result
+});
+
+```
+#### Unsubscribe ####
+
+```javascript
+slashClient.subscribe({
+    subscription_id: 'SUBSCRIPTION_ID'
+}, function (er, result){
+    if (er){
+        return console.log(er);
+    }
+    // Do something else with payment result
+});
+
+```
+
+## Redirect API
+
+#### Redirect ####
+
+```javascript
+slashClient.redirect({
+    items: [{
+        name: 'Item',
+        amt: 10,
+        qty: 1
+    }],
+    return_url: 'SUCCESS_URL',
+    cancel_url: 'FAIL_URL',
+    currency: 'USD'
+}, function (er, result){
+    if (er){
+        return console.log(er);
+    }
+    // Do something else with payment result
+});
+
+```
+
+#### Confirm ####
+
+```javascript
+slashClient.confirm({
+    transaction_id: 'TRANSACTION_ID'
 }, function (er, result){
     if (er){
         return console.log(er);

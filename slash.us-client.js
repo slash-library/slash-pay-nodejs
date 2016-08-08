@@ -36,8 +36,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkPayCardNumberParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkPayCardNumberParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
@@ -64,8 +64,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkPayTokenParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkPayTokenParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
@@ -91,8 +91,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkSubscribeParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkSubscribeParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
@@ -118,8 +118,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkUnsubscribeParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkUnsubscribeParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
@@ -145,8 +145,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkRedirectParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkRedirectParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
@@ -172,8 +172,8 @@ function slashClient (opt) {
             try{
                 
                 // Validate params
-                var validateResult = validate.checkConfirmParams(params);
-                assert(validateResult.pass, validateResult.messages);
+                // var validateResult = validate.checkConfirmParams(params);
+                // assert(validateResult.pass, validateResult.messages);
                 
                 var result = null;
                 
